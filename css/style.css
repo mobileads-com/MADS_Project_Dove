@@ -1,0 +1,435 @@
+@font-face {
+	font-family: "PTC 55";
+	src: url(fonts/PTC55F.ttf);
+}
+
+
+@font-face {
+	font-family: "PTC 75";
+	src: url(fonts/PTC75F.ttf);
+}
+
+body {
+	background-color: #ccc;
+	margin: 0;
+	padding: 0;
+}
+
+.ad-content {
+	overflow: hidden;
+	width: 320px;
+	height: 480px;
+	background-color: #ffffff;
+	position: relative;
+}
+
+.header{
+	background: url("../img/logo_01.png") no-repeat;
+	position: absolute;
+	margin-top: 6px;
+	height: 68px;
+	width: 100%;
+	z-index: 99999;
+	margin-left: 24px;
+}
+
+.adbody{
+	position: relative;
+	font-family: 'PTC 55';
+	color: white;
+}
+
+.adbody.firstFrame{
+	width: 266px;
+	height: 92px;
+	margin-left: 25px;
+	background: url("../img/weather-bg.png") no-repeat;
+	z-index: 0;
+	margin-top: 67px;
+}
+
+.adbody.secondFrame{
+	width: 100%;
+	height: 428px;
+	margin-top: 24px;
+	/*background: url("../img/hair-limp.png") no-repeat;*/
+	z-index: 0;
+}
+
+.adbody.thirdFrame{
+	width: 100%;
+	height: 428px;
+	margin-top: 24px;
+	background: url("../img/hair-complete.png") no-repeat;
+	z-index: 0;
+}
+
+.adbody.finalFrame{
+	width: 320px;
+	height: 481px;
+	background: url("../img/last.png") no-repeat;
+	background-size: cover;
+	opacity: 0;
+	trasition: opacity 1s ease-in-out 1s;
+	-webkit-trasition: opacity 1s ease-in-out 1s;
+}
+
+.adbody.finalFrame > img{
+	margin-left: 195px;
+	margin-top: -49px;
+}
+
+.body-title{
+	color: #012760;
+	margin-top: -404px;
+	text-align: left;
+	margin-left: 46px;
+	font-size: 10px;
+	font-family: 'PTC 75';
+	z-index: 6;
+	position: absolute;
+	opacity: 0;
+	transition: opacity 2s ease-in-out 5s;
+	-webkit-transition: opacity 2s ease-in-out;
+}
+
+.body-text{
+	text-align: left;
+	margin-left: 46px;
+	font-size: 10px;
+	margin-top: -376px;
+	font-family: 'PTC 75';
+	color: #434343;
+	position: absolute;
+	z-index: 6;
+	opacity: 0;
+	transition: opacity 2s ease-in-out 5s;
+	-webkit-transition: opacity 2s ease-in-out;
+}
+
+.adbody > .weather-icon{
+	margin: 20px 0 0 17px;
+}
+
+.humidity, .precip{
+	position: absolute;
+}
+
+.humidity p, .precip p{
+	font-size: 14px;
+}
+
+p.humid-label {
+	margin-top: -54px;
+	margin-left: 97px;
+}
+
+p.humid-value {
+	margin-left: 223px;
+	margin-top: -32px;
+}
+
+p.precip-label {
+	margin-left: 98px;
+	margin-top: -29px;
+}
+
+p.precip-value {
+	margin-left: 208px;
+	margin-top: -32px;
+}
+
+.suggestions {
+	font-size: 12px;
+	font-family: 'PTC 55';
+	margin-left: 3px;
+	line-height: 18px;
+	color: #000000;
+	margin-top: 20px;
+}
+
+#btnProve{
+	width: 159px;
+	height: 33px;
+	background: url("../img/btn1.png") no-repeat;
+	margin-left: 3px;
+	border: none;
+	font-family: "PTC 75";
+	font-size: 18px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.firstScreenFooter{
+	width: 340px;
+	height: 187px;
+	background: url("../img/footer1.png") no-repeat;
+	position: absolute;
+	bottom: -9px;
+	left: -12px;
+	font-family: 'PTC 55';
+}
+
+.firstScreenFooter > .footer-title{
+	color: #002664;
+	margin-top: 104px;
+	text-align: left;
+	margin-left: 43px;
+	font-size: 11px;
+	font-family: 'PTC 75';
+}
+
+.firstScreenFooter > .footer-text{
+	text-align: left;
+	margin-left: 43px;
+	font-size: 10px;
+	margin-top: -7px;
+}
+
+.secondScreenFooter{
+	width: 340px;
+	height: 132px;
+	background: url("../img/footer2.png") no-repeat;
+	position: absolute;
+	bottom: -9px;
+	left: -12px;
+	font-family: 'PTC 55';
+}
+
+.secondScreenFooter > .footer-text {
+	text-align: left;
+	margin-left: 118px;
+	font-size: 12px;
+	margin-top: 65px;
+	font-family: 'PTC 75';
+	color: #002664;
+}
+
+.thirdScreenFooter{
+	width: 340px;
+	height: 132px;
+	background: url("../img/footer2.png") no-repeat;
+	position: absolute;
+	bottom: -9px;
+	left: -12px;
+	font-family: 'PTC 55';
+}
+
+#footer, #body-header{
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 2s ease-in-out 1s, visibility 2s ease-in-out 1s;
+	-webkit-transition:  opacity 2s ease-in-out 1s, visibility 2s ease-in-out 1s;
+}
+
+.thirdScreenFooter > .footer-title {
+	text-align: left;
+	margin-left: 118px;
+	font-size: 11px;
+	margin-top: 45px;
+	font-family: 'PTC 75';
+	color: #002664;
+}
+
+.thirdScreenFooter > .footer-text {
+	text-align: left;
+	margin-left: 118px;
+	font-size: 11px;
+	margin-top: -7px;
+	font-family: 'PTC 75';
+	color: #434343;
+}
+
+.video-link, .fb-link{
+	position: absolute;
+	width: 181px;
+	height: 31px;
+	margin-left: -69px;
+	text-align: center;
+	padding-top: 0px;
+	vertical-align: middle;
+	line-height: 32px;
+	font-family: 'PTC 75';
+	font-size: 15px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #FFFFFF;
+	left: 135px;
+	z-index: 6;
+}
+
+.video-link{
+	margin-top: 353px;
+}
+
+.fb-link{
+	margin-top: 403px;
+}
+
+.hair-complete{
+	position: absolute;
+	margin-left: -320px;
+	margin-top: -10px;
+	opacity: 0;
+	trasition: opacity 2s ease-in-out;
+	-webkit-transition : opacity 2s ease-in-out;
+}
+
+.last-img {
+	position: absolute;
+	left: 1px;
+	top: -23px;
+	z-index: 5;
+	opacity: 0;
+	transition: opacity 2s ease-in-out 1s;
+	-webkit-transition: opacity 2s ease-in-out 1s;
+}
+
+.fade-out{
+	animation-name: fadeout;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: fadeout;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: 1;
+}
+
+.fade-in{
+	animation-name: fadein;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: fadein;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: 1;
+}
+
+
+
+@keyframes fadeout {
+	from {
+		opacity: 1
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		opacity: 1
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+.bubbles-right {
+	width: 169px;
+	height: 308px;
+	background: url("../img/bubbles.png") no-repeat;
+	position: absolute;
+	top: 31px;
+	left: 141px;
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	animation-name: animateBubblesFinalRight;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-delay: 2s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: animateBubblesFinalRight;
+	-webkit-animation-duration: 4s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 2s;
+	-webkit-animation-iteration-count: 1;
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	opacity: 0;
+}
+
+.bubbles {
+	width: 169px;
+	height: 308px;
+	background: url("../img/bubbles.png") no-repeat;
+	animation-name: animateBubbles;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	-webkit-animation-name: animateBubbles;
+	-webkit-animation-duration: 4s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: 1;
+	position: absolute;
+	left: 31px;
+	top: 25px;
+}
+
+/* The animation code */
+@keyframes animateBubbles {
+	from {
+		left: 0;
+		top: 360px;
+	}
+	to {
+		left: 31px;
+		top: 25px;
+	}
+}
+
+@-webkit-keyframes animateBubbles {
+	from {
+		left: 0;
+		top: 360px;
+	}
+	to {
+		left: 31px;
+		top: 25px;
+	}
+}
+
+@keyframes animateBubblesFinalRight {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes animateBubblesFinalRight {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
