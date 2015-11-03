@@ -67,7 +67,7 @@ body {
 .adbody.finalFrame{
 	width: 320px;
 	height: 481px;
-	background: url("../img/last.png") no-repeat;
+	background: url("../img/last.jpg") no-repeat;
 	background-size: cover;
 	opacity: 0;
 	trasition: opacity 1s ease-in-out 1s;
@@ -109,6 +109,10 @@ body {
 
 .adbody > .weather-icon{
 	margin: 20px 0 0 17px;
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	-webkit-transition: opacity 0.5s ease-in-out;
 }
 
 .humidity, .precip{
@@ -120,7 +124,7 @@ body {
 }
 
 p.humid-label {
-	margin-top: -54px;
+	margin-top: 26px;
 	margin-left: 97px;
 }
 
@@ -131,7 +135,7 @@ p.humid-value {
 
 p.precip-label {
 	margin-left: 98px;
-	margin-top: -29px;
+	margin-top: 52px
 }
 
 p.precip-value {
@@ -144,8 +148,9 @@ p.precip-value {
 	font-family: 'PTC 55';
 	margin-left: 3px;
 	line-height: 18px;
-	color: #000000;
-	margin-top: 20px;
+	color: #434343;
+	margin-top: 97px;
+	position: absolute
 }
 
 #btnProve{
@@ -155,9 +160,12 @@ p.precip-value {
 	margin-left: 3px;
 	border: none;
 	font-family: "PTC 75";
-	font-size: 18px;
+	font-size: 17px;
 	color: #ffffff;
 	cursor: pointer;
+	line-height: 1px;
+	position: absolute;
+	margin-top: 198px;
 }
 
 .firstScreenFooter{
@@ -218,8 +226,8 @@ p.precip-value {
 #footer, #body-header{
 	opacity: 1;
 	visibility: visible;
-	transition: opacity 2s ease-in-out 1s, visibility 2s ease-in-out 1s;
-	-webkit-transition:  opacity 2s ease-in-out 1s, visibility 2s ease-in-out 1s;
+	transition: opacity 2s ease-in-out 0.5s, visibility 2s ease-in-out 0.5s;
+	-webkit-transition:  opacity 2s ease-in-out 0.5s, visibility 2s ease-in-out 0.5s;
 }
 
 .thirdScreenFooter > .footer-title {
@@ -277,12 +285,42 @@ p.precip-value {
 
 .last-img {
 	position: absolute;
-	left: 1px;
+	left: 0px;
 	top: -23px;
 	z-index: 5;
 	opacity: 0;
 	transition: opacity 2s ease-in-out 1s;
 	-webkit-transition: opacity 2s ease-in-out 1s;
+}
+
+.btn-social{
+	position: absolute;
+	cursor: pointer;
+}
+
+
+img.button-video.btn-social {
+	margin-top: 335px;
+	margin-left: -253px;
+	opacity: 0;
+	trasition: opacity 1s ease-in-out;
+	-webkit-transition : opacity 1s ease-in-out;
+}
+
+img.button-fb.btn-social {
+	margin-left: -253px;
+	margin-top: 374px;
+	opacity: 0;
+	trasition: opacity 1s ease-in-out;
+	-webkit-transition : opacity 1s ease-in-out;
+}
+
+img.button-site.btn-social {
+	margin-left: -253px;
+	margin-top: 413px;
+	opacity: 0;
+	trasition: opacity 1s ease-in-out;
+	-webkit-transition : opacity 1s ease-in-out;
 }
 
 .fade-out{

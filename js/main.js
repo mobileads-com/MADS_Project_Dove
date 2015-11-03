@@ -60,8 +60,9 @@ var message = {
 		'text' : 'Shake untuk rambut tidak lepek<br> dan terlihat lebih bervolume'
 	},
 	'links' : {
-		'facebook' : 'https://www.facebook.com/DoveThailand',
-		'youtube' : 'https://www.youtube.com/watch?v=ycUsD2v-yf8&list=PLFf-DpTjeMits7lIMDAMhu4qq3LypeduP'
+		'facebook' : 'https://www.facebook.com/doveindonesia',
+		'youtube' : 'https://www.youtube.com/watch?v=kFsb7DnPZzQ',
+		'landing'	: 'http://m.dove.co.id/id/Produk/Hair/Shampoos/Dove-Volume-Nourishment-Shampo.aspx?StayOnSite=true'
 	},
 	'location' :{
 		'lat' : null,
@@ -98,6 +99,7 @@ var dove = function(){
 	this.clickHandler = null;
 	
 	this.app.loadCss(this.app.path + 'css/style.css');
+	// this.app.loadJs(this.app.path + 'js/jquery-1.11.3.min.js');
 	var ip2LocationSctipt = document.createElement('SCRIPT');
 	ip2LocationSctipt.setAttribute('src', 'http://www.geoplugin.net/javascript.gp');
 	ip2LocationSctipt.setAttribute('type', 'text/javascript');
@@ -234,18 +236,20 @@ dove.prototype.secondScreen = function(){
 	widget.setAttribute('class', 'adbody secondFrame fade-in');
 	var limp = document.createElement('IMG');
 	limp.setAttribute('class', 'hair-limp');
+	limp.setAttribute('id', 'hair-limp');
 	limp.setAttribute('src', _this.app.path + 'img/hair-limp.png');
 	widget.appendChild(limp);
 
 	var complete = document.createElement('IMG');
 	complete.setAttribute('class', 'hair-complete');
+	complete.setAttribute('id', 'hair-complete');
 	complete.setAttribute('src', _this.app.path + 'img/hair-complete.png');
 	widget.appendChild(complete);
 
 	var last = document.createElement('IMG');
 	last.setAttribute('class', 'last-img');
 	last.setAttribute('id', 'last-img');
-	last.setAttribute('src', _this.app.path + 'img/last.png');
+	last.setAttribute('src', _this.app.path + 'img/last.jpg');
 	widget.appendChild(last);
 
 	footer();
@@ -280,7 +284,7 @@ dove.prototype.secondScreen = function(){
 		}
 
 		_this.autoTimeout = setTimeout(function(){ bubbles();
-		}, 10000);
+		}, 1000);
 	}
 
 	function footer(){
@@ -337,12 +341,35 @@ dove.prototype.thirdScreen = function(){
 		var widget = document.getElementById('ad_body');
 		var footer = document.getElementById('footer');
 		var last = document.getElementById('last-img');
+		var limp = document.getElementById('hair-limp');
+		var cmplte = document.getElementById('hair-complete');
+
 		last.style.opacity = '1';
-		footer.style.opacity = '0';
+		cmplte.style.opacity = '0';
+		limp.style.opacity = '0';
+		last.style.zIndex = '-1';
+
 		footer.style.visibility = 'hidden';
+		footer.style.opacity = '0';		
 
 		var header = document.getElementById('body-header');
 		header.style.opacity = '0';
+
+		var video = document.createElement('IMG');
+		video.setAttribute('class', 'button-video btn-social');
+		video.setAttribute('src',  _this.app.path + 'img/bttn1.jpg');
+
+		var facebook = document.createElement('IMG');
+		facebook.setAttribute('class', 'button-fb btn-social');
+		facebook.setAttribute('src',  _this.app.path + 'img/bttn2.png');
+
+		var site = document.createElement('IMG');
+		site.setAttribute('class', 'button-site btn-social');
+		site.setAttribute('src',  _this.app.path + 'img/bttn3.jpg');
+
+		widget.appendChild(video);
+		widget.appendChild(facebook);
+		widget.appendChild(site);
 
 		var title = document.createElement('P');
 		title.setAttribute('class', 'body-title');
@@ -358,30 +385,33 @@ dove.prototype.thirdScreen = function(){
 		setTimeout(function(){
 			title.style.opacity = '1';
 			text.style.opacity = '1';
+			video.style.opacity = '1';
+			facebook.style.opacity = '1';
+			site.style.opacity = '1';
 		}, 1000);
 
-		var youtube = document.createElement('a');
-		youtube.setAttribute('class', 'video-link');
-		youtube.setAttribute('id', 'btnVideo');
-		youtube.setAttribute('href', message.links.youtube);
-		youtube.setAttribute('target', '_blank');
-		youtube.innerHTML = 'LIHAT VIDEO';
-		widget.appendChild(youtube);
+		// var youtube = document.createElement('a');
+		// youtube.setAttribute('class', 'video-link');
+		// youtube.setAttribute('id', 'btnVideo');
+		// youtube.setAttribute('href', message.links.youtube);
+		// youtube.setAttribute('target', '_blank');
+		// youtube.innerHTML = 'LIHAT VIDEO';
+		// widget.appendChild(youtube);
 
-		var facebook = document.createElement('a');
-		facebook.setAttribute('class', 'fb-link');
-		facebook.setAttribute('id', 'btnFbs');
-		facebook.setAttribute('href', message.links.facebook);
-		facebook.setAttribute('target', '_blank');
-		facebook.innerHTML = 'LIKE FACEBOOK';
-		widget.appendChild(facebook);
-
-		facebook.addEventListener('click', function(e){
+		// var facebook = document.createElement('a');
+		// facebook.setAttribute('class', 'fb-link');
+		// facebook.setAttribute('id', 'btnFbs');
+		// facebook.setAttribute('href', message.links.facebook);
+		// facebook.setAttribute('target', '_blank');
+		// facebook.innerHTML = 'LIKE FACEBOOK';
+		// widget.appendChild(facebook);
+		
+		site.addEventListener('click', function(e){
 			e.preventDefault();
-			var url = this.getAttribute('href');
+			var url = message.links.landing; //this.getAttribute('href');
 			_this.app.linkOpener(url);
 
-			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerFacebook == 0) {
+			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerLanding == 0) {
 				for (var i = 0; i < _this.app.custTracker.length; i++) {
 					if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
 						_this.adtrackerFacebook = 1;
@@ -394,9 +424,27 @@ dove.prototype.thirdScreen = function(){
 			}
 		}, false);
 
-		youtube.addEventListener('click', function(e){
+		facebook.addEventListener('click', function(e){
 			e.preventDefault();
-			var url = this.getAttribute('href');
+			var url = message.links.facebook; //this.getAttribute('href');
+			_this.app.linkOpener(url);
+
+			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerFacebook == 0) {
+				for (var i = 0; i < _this.app.custTracker.length; i++) {
+					if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
+						_this.adtrackerFacebook = 1;
+						var img = document.createElement('IMG');
+						img.setAttribute('style', 'display:none;');
+						img.setAttribute('src', _this.app.custTracker[i] + 'dove_facebook' + '&' + _this.app.id);
+						document.getElementsByTagName('BODY')[0].appendChild(img);
+					}
+				}
+			}
+		}, false);
+
+		video.addEventListener('click', function(e){
+			e.preventDefault();
+			var url = message.links.youtube; //this.getAttribute('href');
 			_this.app.linkOpener(url);
 
 			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerYoutube == 0) {
@@ -423,24 +471,25 @@ dove.prototype.currentLocation = function(){
 			message.location.lat = geoplugin_latitude();
 			message.location.lng = geoplugin_longitude();
 		} else {
-			message.location.lat = 13.736717;
-			message.location.lng = 100.523186;
+			message.location.lat = -4.236856;
+			message.location.lng = 122.069092;
 		}
 		_this.updateWeather();
 	}, 1000);
 }
 
 dove.prototype.updateWeather = function(){
+	var _this = this;
+
 	var weatherIcon = document.getElementById('weather-img');
 	var humidityVal = document.getElementById('humid-value');
 	var precipitationVal = document.getElementById('precip-value');
 	var suggestionVal = document.getElementById('suggestion');
-	var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + message.location.lat + '&lon=' + message.location.lng;
+	var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + message.location.lat + '&lon=' + message.location.lng +'&APPID=56d5c262450a9716ebacbfed231dcfa5';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', weatherApiUrl, true);
 	xhr.onreadystatechange = function () {
 		var obj = JSON.parse(xhr.responseText);
-
       	if  (obj.cod = 200) { // if we were able to call API successfully then just display it
 	        	if (obj.weather[0].icon != '01d' && obj.weather[0].icon != '01n' && obj.weather[0].icon != '02d' && obj.weather[0].icon != '02n') {
 	        		suggestionVal.innerHTML = message.rainy;
@@ -457,11 +506,13 @@ dove.prototype.updateWeather = function(){
 	        	} else {
 	        		precipitation = '0';
 	        	}
-	        	weatherIcon.setAttribute('src', path+'img/icons/' + iconWeather + '.png');
+	        	weatherIcon.setAttribute('src', _this.app.path+'img/icons/' + iconWeather + '.png');
+	        	weatherIcon.style.opacity = '1';
 	        	humidityVal.innerHTML = humidity + '%';
 	        	precipitationVal.innerHTML = precipitation + ' mm';
       	} else { // if API call was not successful then display default sunny weather information
 	        	weatherIcon.setAttribute('src', path+'img/icons/01d.png');
+	        	weatherIcon.style.opacity = '1';
 	        	humidityVal.innerHTML = '89%';
 	        	precipitationVal.innerHTML = '99 mm';
 	        	suggestionVal.innerHTML = msgObj.sunny;
