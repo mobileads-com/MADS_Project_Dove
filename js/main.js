@@ -99,7 +99,6 @@ var dove = function(){
 	this.clickHandler = null;
 	
 	this.app.loadCss(this.app.path + 'css/style.css');
-	// this.app.loadJs(this.app.path + 'js/jquery-1.11.3.min.js');
 	var ip2LocationSctipt = document.createElement('SCRIPT');
 	ip2LocationSctipt.setAttribute('src', 'http://www.geoplugin.net/javascript.gp');
 	ip2LocationSctipt.setAttribute('type', 'text/javascript');
@@ -218,20 +217,8 @@ dove.prototype.firstScreen = function(parent){
 
 dove.prototype.secondScreen = function(){
 	var _this = this;
+	_this.app.tracker('E', 'dove_next');
 	document.getElementById('adscreen').removeEventListener('click', _this.clickHandler, false);
-
-	if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerStart == 0) {
-		for (var i = 0; i < _this.app.custTracker.length; i++) {
-			if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
-				_this.adtrackerStart = 1;
-				var img = document.createElement('IMG');
-				img.setAttribute('style', 'display:none;');
-				img.setAttribute('src', _this.app.custTracker[i] + 'dove_next' + '&' + _this.app.id);
-				document.getElementsByTagName('BODY')[0].appendChild(img);
-			}
-		}
-	}
-	
 	var widget = document.getElementById('ad_body');
 	widget.setAttribute('class', 'adbody secondFrame fade-in');
 	var limp = document.createElement('IMG');
@@ -261,19 +248,6 @@ dove.prototype.secondScreen = function(){
 			window.addEventListener("devicemotion", function (eventData) {
 				var rotation = eventData.rotationRate;
 				if ((rotation.alpha > 15 || rotation.alpha < -15) || (rotation.beta > 15 || rotation.beta < -15) || (rotation.gamma > 15 || rotation.gamma < -15)) {
-		            // adding tracking for shacking
-		            if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerShake == 0) {
-		            	for (var i = 0; i < _this.app.custTracker.length; i++) {
-		            		if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
-		            			_this.adtrackerShake = 1;
-		            			var img = document.createElement('IMG');
-		            			img.setAttribute('style', 'display:none;');
-		            			img.setAttribute('src', _this.app.custTracker[i] + 'dove_shake' + '&' + _this.app.id);
-		            			document.getElementsByTagName('BODY')[0].appendChild(img);
-		            		}
-		            	}
-		            }
-
 		            bubbles();
 		            window.removeEventListener('devicemotion', arguments.callee, false);
 		            clearTimeout(_this.autoTimeout);
@@ -284,7 +258,7 @@ dove.prototype.secondScreen = function(){
 		}
 
 		_this.autoTimeout = setTimeout(function(){ bubbles();
-		}, 1000);
+		}, 10000);
 	}
 
 	function footer(){
@@ -298,6 +272,7 @@ dove.prototype.secondScreen = function(){
 	}
 
 	function bubbles(){
+		_this.app.tracker('E', 'dove_shake');
 		var bubbles = document.createElement('DIV');
 		bubbles.setAttribute('class', 'bubbles');
 		bubbles.setAttribute('id', 'bubbles');
@@ -389,75 +364,26 @@ dove.prototype.thirdScreen = function(){
 			facebook.style.opacity = '1';
 			site.style.opacity = '1';
 		}, 1000);
-
-		// var youtube = document.createElement('a');
-		// youtube.setAttribute('class', 'video-link');
-		// youtube.setAttribute('id', 'btnVideo');
-		// youtube.setAttribute('href', message.links.youtube);
-		// youtube.setAttribute('target', '_blank');
-		// youtube.innerHTML = 'LIHAT VIDEO';
-		// widget.appendChild(youtube);
-
-		// var facebook = document.createElement('a');
-		// facebook.setAttribute('class', 'fb-link');
-		// facebook.setAttribute('id', 'btnFbs');
-		// facebook.setAttribute('href', message.links.facebook);
-		// facebook.setAttribute('target', '_blank');
-		// facebook.innerHTML = 'LIKE FACEBOOK';
-		// widget.appendChild(facebook);
 		
 		site.addEventListener('click', function(e){
 			e.preventDefault();
-			var url = message.links.landing; //this.getAttribute('href');
+			var url = message.links.landing;
 			_this.app.linkOpener(url);
-
-			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerLanding == 0) {
-				for (var i = 0; i < _this.app.custTracker.length; i++) {
-					if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
-						_this.adtrackerFacebook = 1;
-						var img = document.createElement('IMG');
-						img.setAttribute('style', 'display:none;');
-						img.setAttribute('src', _this.app.custTracker[i] + 'dove_site' + '&' + _this.app.id);
-						document.getElementsByTagName('BODY')[0].appendChild(img);
-					}
-				}
-			}
+			_this.app.tracker('CTR', 'dove_site');
 		}, false);
 
 		facebook.addEventListener('click', function(e){
 			e.preventDefault();
-			var url = message.links.facebook; //this.getAttribute('href');
+			var url = message.links.facebook;
 			_this.app.linkOpener(url);
-
-			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerFacebook == 0) {
-				for (var i = 0; i < _this.app.custTracker.length; i++) {
-					if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
-						_this.adtrackerFacebook = 1;
-						var img = document.createElement('IMG');
-						img.setAttribute('style', 'display:none;');
-						img.setAttribute('src', _this.app.custTracker[i] + 'dove_facebook' + '&' + _this.app.id);
-						document.getElementsByTagName('BODY')[0].appendChild(img);
-					}
-				}
-			}
+			_this.app.tracker('E', 'dove_facebook');
 		}, false);
 
 		video.addEventListener('click', function(e){
 			e.preventDefault();
-			var url = message.links.youtube; //this.getAttribute('href');
+			var url = message.links.youtube;
 			_this.app.linkOpener(url);
-
-			if (typeof _this.app.custTracker != 'undefined' && _this.adtrackerYoutube == 0) {
-				for (var i = 0; i < _this.app.custTracker.length; i++) {
-					if (typeof _this.app.custTracker[i] != 'undefined' && _this.app.custTracker[i] != '') {
-						_this.adtrackerYoutube = 1;
-						var img = document.createElement('IMG');
-						img.setAttribute('style', 'display:none;');
-						img.setAttribute('src', _this.app.custTracker[i] + 'dove_youtube' + '&' + _this.app.id);
-						document.getElementsByTagName('BODY')[0].appendChild(img);
-					}
-				}
-			}
+			_this.app.tracker('E', 'dove_youtube');
 		}, false);
 	}
 

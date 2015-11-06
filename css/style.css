@@ -301,14 +301,14 @@ p.precip-value {
 
 img.button-video.btn-social {
 	margin-top: 335px;
-	margin-left: -253px;
+	margin-left: -251px;
 	opacity: 0;
 	trasition: opacity 1s ease-in-out;
 	-webkit-transition : opacity 1s ease-in-out;
 }
 
 img.button-fb.btn-social {
-	margin-left: -253px;
+	margin-left: -251px;
 	margin-top: 374px;
 	opacity: 0;
 	trasition: opacity 1s ease-in-out;
@@ -316,7 +316,7 @@ img.button-fb.btn-social {
 }
 
 img.button-site.btn-social {
-	margin-left: -253px;
+	margin-left: -251px;
 	margin-top: 413px;
 	opacity: 0;
 	trasition: opacity 1s ease-in-out;
